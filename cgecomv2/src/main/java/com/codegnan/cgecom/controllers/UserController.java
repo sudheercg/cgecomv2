@@ -62,9 +62,23 @@ public class UserController {
         return "redirect:/users"; // After creating, redirect to user list
     }
     */
+ 
+    
+    @PostMapping("/create")
+    public String createUser(@ModelAttribute User user, Model model) {
+        try {
+            // Delegate user creation to the service layer
+            userService.createUser(user.getUsername(), user.getPassword(), user.getRole(), user.getPhone_number(), user.getEmail());
+            return "redirect:/login"; // Redirect on success
+        } catch (RuntimeException e) {
+            // Handle the exception gracefully and return to the registration page
+            model.addAttribute("error", e.getMessage());
+            return "user-create";
+        }
+    }
     
     
-    
+ /*   
  // Handle user creation form submission
     @PostMapping("/create")
     public String createUser(@ModelAttribute User user, Model model) {
@@ -73,7 +87,7 @@ public class UserController {
             userService.createUser(user.getUsername(), user.getPassword(), user.getRole(), user.getPhone_number(), user.getEmail());
             
             // Send a welcome email
-            String subject = "Welcome to CgEcom!";
+            String subject = "Welcome to CGEcom!";
             String body = "<h1>Thank you for registering, " + user.getUsername() + "!</h1>"
                         + "<p>We are glad to have you on board.</p>";
             emailService.sendEmail(user.getEmail(), subject, body);
@@ -83,12 +97,12 @@ public class UserController {
         } catch (Exception e) {
             // Add an error message to the model and return to the registration page
             model.addAttribute("error", "Failed to create user: " + e.getMessage());
-            return "create-user"; // Return to the user creation page with an error message
+            return "user-create"; // Return to the user creation page with an error message
         }
     }
 
     
-    
+    */
     
 
     // Show user edit form

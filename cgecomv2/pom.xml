@@ -9,10 +9,12 @@
 		<version>3.3.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>jspwithboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>jspwithboot</name>
+	<groupId>com.codegnan</groupId>
+	<artifactId>cgecom</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+	<name>cgecom</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
 	<licenses>
@@ -62,22 +64,17 @@
 		</dependency>
 
 
-
-     
-<dependency>
-    <groupId>com.razorpay</groupId>
-    <artifactId>razorpay-java</artifactId>
-    <version>1.4.8</version>
-</dependency>
+		<dependency>
+			<groupId>com.razorpay</groupId>
+			<artifactId>razorpay-java</artifactId>
+			<version>1.4.8</version>
+		</dependency>
 
 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-</dependency>
-
-
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 
 
 		<!--
@@ -98,32 +95,29 @@
     <version>1.2</version>
 </dependency>-->
 
-<!--<dependency>
+		<!--<dependency>
     <groupId>org.glassfish</groupId>
     <artifactId>javax.el</artifactId>
     <version>3.0.1-b11</version>
 </dependency>-->
 
 
-
-  
-  
-        <!-- JSP Support -->
-    <dependency>
-        <groupId>org.apache.tomcat.embed</groupId>
-        <artifactId>tomcat-embed-jasper</artifactId>
-       <!-- <version>10.1.31</version>-->
-    </dependency>
-    <dependency>
-        <groupId>jakarta.servlet.jsp.jstl</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-     <!--   <version>3.0.0</version>-->
-    </dependency>
-    <dependency>
-        <groupId>org.glassfish.web</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <!--  <version>3.0.0</version>-->
-    </dependency>
+		<!-- JSP Support -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<!-- <version>10.1.31</version>-->
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<!--   <version>3.0.0</version>-->
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<!--  <version>3.0.0</version>-->
+		</dependency>
 
 	</dependencies>
 
@@ -133,7 +127,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
 		</plugins>
+
+
 	</build>
 
 </project>

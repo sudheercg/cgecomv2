@@ -3,6 +3,7 @@ package com.codegnan.cgecom.service.impl;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.codegnan.cgecom.model.User;
 import com.codegnan.cgecom.repositories.UserRepository;
@@ -12,9 +13,11 @@ import com.codegnan.cgecom.service.iface.UserService;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
+    private final EmailService emailService;
+    
+    public UserServiceImpl(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     @Override
@@ -26,15 +29,60 @@ public class UserServiceImpl implements UserService {
         return null; // Authentication failed
     }
     
-    public User createUser(String username, String password, String role,String phoneNumber,String email) {
+    
+	/*
+	 * @Transactional public User createUser(String username, String password,
+	 * String role,String phoneNumber,String email) { User user = new User();
+	 * user.setUsername(username); user.setPassword(password); user.setRole(role);
+	 * user.setPhone_number(phoneNumber); user.setEmail(email); return
+	 * userRepository.save(user); }
+	 */
+    
+    
+    @Transactional
+    public User createUser(String username, String password, String role, String phoneNumber, String email) {
+        // Create a new user object
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password); 
+        user.setPassword(password);
         user.setRole(role);
-        user.setPhone_number(phoneNumber);   
+        user.setPhone_number(phoneNumber);
         user.setEmail(email);
-        return userRepository.save(user);
+
+        // Save the user to the database
+        User savedUser = userRepository.save(user);
+
+        // Attempt to send a welcome email
+        String subject = "Welcome to CGEcom!";
+        String body = "<h1>Thank you for registering, " + username + "!</h1>"
+                    + "<p>We are glad to have you on board.</p>";
+
+        // If the email fails, it throws a RuntimeException, which triggers the rollback
+        emailService.sendEmail(email, subject, body);
+
+        return savedUser;
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
   
     @Override

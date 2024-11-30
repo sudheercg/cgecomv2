@@ -9,6 +9,15 @@
 </head>
 <body>
     <div class="container">
+    
+      <!-- Display error message if user creation fails -->
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger text-center">
+                        ${error} <!-- Display the error message -->
+                    </div>
+                </c:if>
+    
+    
         <h1>Create New User</h1>
         <form action="/users/create" method="post">
             <div class="form-group">
