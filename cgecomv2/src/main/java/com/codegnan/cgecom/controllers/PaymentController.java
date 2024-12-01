@@ -1,5 +1,7 @@
 package com.codegnan.cgecom.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    
+    /*
     @GetMapping("/checkout")
     public String checkout(@RequestParam double amount, Model model) {
         try {
@@ -28,6 +32,23 @@ public class PaymentController {
         }
         return "checkout"; // JSP for payment page
     }
+    
+    */
+    
+    /*
+    
+    @GetMapping("/checkout")
+    public String checkout(@RequestParam double amount, Model model) {
+        try {
+            Map orderDetails = paymentService.createOrder(amount);
+            model.addAttribute("orderDetails", orderDetails);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // Error JSP
+        }
+        return "checkout"; // JSP for payment page
+    }*/
+    
 
     @PostMapping("/verify")
     public String verifyPayment(@RequestParam String razorpayPaymentId,

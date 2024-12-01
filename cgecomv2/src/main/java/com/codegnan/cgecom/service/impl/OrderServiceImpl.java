@@ -1,6 +1,7 @@
 package com.codegnan.cgecom.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.codegnan.cgecom.model.Order;
 import com.codegnan.cgecom.repositories.OrderRepository;
@@ -15,7 +16,8 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository = orderRepository;
     }
 
-    @Override
+    
+    @Transactional
     public void saveOrder(Order order) {
         orderRepository.save(order);
     }

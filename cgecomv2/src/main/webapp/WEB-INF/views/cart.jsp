@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %> <!-- Include the header -->
 
 <!DOCTYPE html>
 <html>
@@ -109,5 +110,7 @@
             };
         });
     </script>
+           <%@ include file="footer.jsp" %> <!-- Include the footer -->
+    
 </body>
 </html>

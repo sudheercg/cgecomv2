@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="header.jsp" %> <!-- Include the header -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +57,9 @@
             
             <button type="submit" class="btn btn-primary">Create User</button>
         </form>
-        <a href="/users" class="btn btn-secondary mt-3">Back to User List</a>
-    </div>
+		<a href="/login" class="btn btn-secondary mt-3">Proceed to Login</a>
+ </div>
+        <%@ include file="footer.jsp" %> <!-- Include the footer -->
+ 
 </body>
 </html>

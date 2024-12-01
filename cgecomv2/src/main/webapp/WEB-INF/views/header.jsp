@@ -3,7 +3,7 @@
 <style>
     /* Custom Header Styling */
     header {
-        background-color: #000; /* Solid black background */
+        background-color: #3cb371; /* Solid black background */
         color: white; /* White text for contrast */
         display: flex;
         justify-content: space-between; /* Ensures the elements are spaced out */
@@ -14,6 +14,7 @@
 
     /* Logo and Title Styling */
     header h1 {
+    color: white; /* White text for contrast */
         font-size: 1.8rem; /* Slightly larger font for the title */
         margin: 0;
         font-weight: bold;

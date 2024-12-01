@@ -40,7 +40,9 @@ public class Order {
         this.user = user;
     }
 
-    public BigDecimal getTotalPrice() {
+    
+
+	public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
@@ -63,4 +65,11 @@ public class Order {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+    
+    @Override
+	public String toString() {
+		return "Order [id=" + id + ", user=" + user + ", totalPrice=" + totalPrice + ", orderStatus=" + orderStatus
+				+ ", orderItems=" + orderItems + "]";
+	}
+    
 }
