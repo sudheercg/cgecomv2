@@ -3,7 +3,7 @@
 <style>
     /* Custom Header Styling */
     header {
-        background-color: #3cb371; /* Solid black background */
+        background-color: #3cb371; /* Solid green background */
         color: white; /* White text for contrast */
         display: flex;
         justify-content: space-between; /* Ensures the elements are spaced out */
@@ -14,13 +14,34 @@
 
     /* Logo and Title Styling */
     header h1 {
-    color: white; /* White text for contrast */
         font-size: 1.8rem; /* Slightly larger font for the title */
         margin: 0;
         font-weight: bold;
     }
 
-    /* User Info and Logout Styling */
+    /* Navigation Section */
+    .nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .order-history-btn {
+        background-color: #343a40; /* Bootstrap dark color */
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-right: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .order-history-btn:hover {
+        background-color: #23272b; /* Slightly darker on hover */
+    }
+
+    /* User Info and Logout Button */
     .user-info {
         display: flex;
         align-items: center;
@@ -28,24 +49,23 @@
 
     .user-info p {
         margin: 0;
-        margin-right: 15px; /* Space between username and button */
+        margin-right: 15px;
         font-size: 1rem;
     }
 
     .logout-btn {
-        background-color: #dc3545; /* Bootstrap red color for contrast */
+        background-color: #dc3545; /* Bootstrap red color */
         border: none;
         padding: 5px 10px;
         color: white;
         font-size: 0.9rem;
         cursor: pointer;
         text-decoration: none;
-        border-radius: 3px; /* Rounded corners */
+        border-radius: 3px;
     }
 
     .logout-btn:hover {
         background-color: #c82333; /* Slightly darker red on hover */
-        text-decoration: none;
     }
 </style>
 
@@ -53,11 +73,19 @@
     <!-- Left Corner: CGEcom Logo/Title -->
     <h1>CGEcom</h1>
 
-    <!-- Right Corner: User Info and Logout -->
-    <c:if test="${loggedInUser != null}">
+    <!-- Right Corner: Navigation Links and User Info -->
+    <div class="nav-links">
+        <!-- Display 'Order History' button only for users with role USER -->
+        <c:if test="${loggedInUser != null && loggedInUser.role == 'USER'}">
+            <a href="/orders" class="order-history-btn">Order History</a>
+        </c:if>
+
+        <!-- User Info -->
         <div class="user-info">
-            <p>Welcome, ${loggedInUser.username}!</p>
-            <a href="/logout" class="logout-btn">Sign Out</a>
+            <c:if test="${loggedInUser != null}">
+                <p>Welcome, ${loggedInUser.username}!</p>
+                <a href="/logout" class="logout-btn">Sign Out</a>
+            </c:if>
         </div>
-    </c:if>
+    </div>
 </header>
