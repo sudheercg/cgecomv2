@@ -2,11 +2,14 @@ package com.codegnan.cgecom.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +26,14 @@ public class Product {
     @Column(name="image_path")
     private String  imagePath;
     
+    
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "category_id", nullable = true) // Nullable for backward compatibility
+    private Category category;
+    
+	private transient MultipartFile imageFile;
+
+    
   /*  
     private transient MultipartFile imageFile; // Temporary field for file upload (no persistence)
   
@@ -37,7 +48,14 @@ public class Product {
     
     
     
-    private transient MultipartFile imageFile;
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 
     public MultipartFile getImageFile() {
         return imageFile;
@@ -46,12 +64,7 @@ public class Product {
     public void setImageFile(MultipartFile imageFile) {
         this.imageFile = imageFile;
     }
-    
-    
-    
-    
-    
-    
+        
     
 	public String getImagePath() {
 		return imagePath;

@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -15,6 +15,24 @@
         <!-- Product Edit Form -->
         <form action="/products/edit/${product.id}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${product.id}">
+            
+            
+        <div class="form-group">
+    <label for="category">Category:</label>
+    <select id="category" name="categoryId" class="form-control" required>
+        <!-- Add "Category not selected" as the first option -->
+        <option value="" <c:if test="${product.category == null}">selected</c:if>>Category not selected</option>
+        
+        <!-- Iterate through categories and select the matching one -->
+        <c:forEach var="category" items="${categories}">
+            <option value="${category.id}" 
+                <c:if test="${category.id == product.category.id}">selected</c:if>>
+                ${category.name}
+            </option>
+        </c:forEach>
+    </select>
+</div>
+            
             
             <div class="form-group">
                 <label for="name">Product Name</label>

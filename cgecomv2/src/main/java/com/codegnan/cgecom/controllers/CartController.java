@@ -231,9 +231,8 @@ public class CartController {
 
 			for (OrderItem item : cartItems) {
 				item.setOrder(order);
-				// totalPrice += item.getPrice() * item.getQuantity();
-				totalPrice = cartItems.stream().mapToDouble(orderitem -> orderitem.getPrice() * orderitem.getQuantity())
-						.sum();
+				 totalPrice += item.getPrice() * item.getQuantity();
+				//totalPrice = cartItems.stream().mapToDouble(orderitem -> orderitem.getPrice() * orderitem.getQuantity()).sum();
 				System.out.println(item.getProduct().getName());
 
 			}

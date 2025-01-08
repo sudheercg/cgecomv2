@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +12,24 @@
     <div class="container">
         <h1>Add New Product</h1>
         <form action="/products/add" method="post"  enctype="multipart/form-data" class="mt-3">
+            
+            
+            
+            
+                   <!-- Category Dropdown -->
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="categoryId" class="form-control" required>
+                    <c:forEach var="category" items="${categories}">
+                        <option value="${category.id}">${category.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            
+            
+            
+            
+            
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" class="form-control" required>
@@ -27,6 +48,8 @@
               <input type="file" name="imageFile" id="imageFile" class="form-control-file">
              </div>
             
+         
+         
             
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>

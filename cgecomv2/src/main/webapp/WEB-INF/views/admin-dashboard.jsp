@@ -16,7 +16,7 @@
 
         <!-- Admin Options -->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Manage Users</h5>
@@ -25,12 +25,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Manage Products</h5>
                         <p class="card-text">Add, edit, or delete products in the store.</p>
                         <a href="/products" class="btn btn-primary">Go to Manage Products</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Categories</h5>
+                        <p class="card-text">Add, edit, or delete product categories.</p>
+                        <a href="/categories" class="btn btn-primary">Go to Manage Categories</a>
                     </div>
                 </div>
             </div>

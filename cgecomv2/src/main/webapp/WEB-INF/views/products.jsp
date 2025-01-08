@@ -54,7 +54,7 @@
                 <input type="number" id="price" name="price" class="form-control" step="0.01" required>
             </div>
             
-         
+          
              
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
